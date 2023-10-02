@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use app\Models\Wallet;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class WalletsTableSeeder extends Seeder
 {
@@ -15,6 +15,10 @@ class WalletsTableSeeder extends Seeder
      */
     public function run()
     {
-      Wallet::factory(10)->create();
+        DB::table('wallets')->insert([
+            'amount' => 1000,
+            'user_id' => 1,  // Assuming first user
+            'currency_id' => 1  // Assuming USD
+        ]);
     }
 }

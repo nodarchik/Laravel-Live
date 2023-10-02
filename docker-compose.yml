@@ -24,8 +24,9 @@ services:
     container_name: laravel-live-coding-db
     restart: on-failure
     environment:
-      PGPASSWORD: ${DB_PASSWORD}
-      PGUSER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE}
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:

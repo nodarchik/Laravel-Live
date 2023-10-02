@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Interfaces\CurrencyRepositoryInterface;
+use App\Interfaces\UserRepositoryInterface;
+use App\Repositories\UserRepository;
+use App\Repositories\CurrencyRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(CurrencyRepositoryInterface::class, CurrencyRepository::class);
     }
 
     /**
@@ -23,6 +30,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Response::macro('apiResponse', function ($status, $message, $data = null) {
+            return response()->json([
+                'status' => $status,
+                'message' => $message,
+                'data' => $data,
+            ]);
+        });
     }
 }

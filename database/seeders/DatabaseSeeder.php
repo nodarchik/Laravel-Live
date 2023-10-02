@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use app\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,15 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-        // WithoutModelEvents::disable();
-
         $this->call([
-          CurrenciesTableSeeder::class,
-          UserTableSeeder::class,
-          WalletsTableSeeder::class,
+            UsersTableSeeder::class,
+            CurrenciesTableSeeder::class,
+            WalletsTableSeeder::class,
         ]);
-
-        // WithoutModelEvents::enable();
     }
 }

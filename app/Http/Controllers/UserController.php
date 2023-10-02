@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\User;
+use App\Interfaces\UserRepositoryInterface;
+use Illuminate\Support\Facades\Response;
 
 class UserController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function index()
     {
-        $users = User::with('wallets.currency')->get()->map(function ($user){
-            return [
-                'name'=>$user->name,
-                'email'=>$user->email,
-                'phone'=>$user->phone,
-                'photo'=>$user->photo,
-                'wallets'=>$user->wallets->map(function ($wallet){
-                    return [
-                        'currency'=>$wallet->currency->name,
-                        'amount'=>$wallet->amount
-                    ];
-                })
-            ];
-        });
-        return response()->json($users);
+        try {
+            $users = $this->userRepository->getAllUsersWithWallets();
+            return response()->apiResponse(true, 'Users fetched successfully', $users);
+        } catch (\Exception $e) {
+            return response()->apiResponse(false, 'An error occurred: ' . $e->getMessage());
+        }
     }
 }
