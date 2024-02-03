@@ -1,9 +1,6 @@
 
 ## About Project
 
-THis Laravel project for laravel-live-coding testing.
-You have to do 3 task here using your knowledge of PHP / Laravel / DB and best-practise (SOLID)
-
 ### Our Stack
 1. PHP 8.0
 2. Laravel Framework 9.52.15
@@ -11,7 +8,7 @@ You have to do 3 task here using your knowledge of PHP / Laravel / DB and best-p
 4. Docker
 5. NGINX (http://127.0.0.1:8010/api/)
 
-##### I prepared few steps to install this project on your PC (Linux).
+##### few steps to install this project on your PC (Linux).
 - git clone https://github.com/DeSKot/Laravel-live-coding
 - add .env file and cope data from .env.example
 - docker-compose up --build --force-recreate -d
@@ -49,7 +46,7 @@ You have to do 3 task here using your knowledge of PHP / Laravel / DB and best-p
 
 [
 {
-"name": "Dima",
+"name": "ad",
 "email": "@gmail.com",
 "phone": "+38000000000",
 "photo": "https://d3jqtupnzefbtn.cloudfront.net/andersenlab/new-andersensite/testimonials/60x60/without-photo.png",
